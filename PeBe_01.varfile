@@ -1,0 +1,33 @@
+controllerConfig=PeBe
+# General settings
+disableEULA=true
+enableUDC=false
+serverHostName=hostName
+# Ports
+serverPort=8090
+sslPort=8181
+databasePort=3388
+adminPort=4848
+restAPIPort=9080
+restAPIAdminPort=9081
+iiopPort=3700
+jmsPort=7676
+reportingServiceHTTPPort=8020
+reportingServiceHTTPSPort=8021
+# Directories
+sys.installationDir=/appl/apm/AppDynamics/Controller
+realDataDir=/data/apm/AppDynamics/Controller/db/data
+transactionLogDir=/data/apm/AppDynamics/Controller/db/data
+elasticSearchDataDir=/data/apm/AppDynamics/Controller/events_service/analytics-processor
+# Server settings/Users/jan.kirchner/VProjects/controller_3_4215_centos7/init.sh
+controllerTenancyMode=single
+controllerConfig=small
+sys.languageId=en
+haControllerType=notapplicable
+# Users
+userName=appd-admin
+password=disraeli
+rePassword=disraeli
+rootUserPassword=disraeli
+rootUserRePassword=disraeli
+mysqlRootUserPassword=disraeli

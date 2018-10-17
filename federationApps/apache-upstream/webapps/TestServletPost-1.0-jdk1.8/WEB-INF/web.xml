@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <display-name>Archetype Created Web Application</display-name>
+
+
+    <servlet>
+        <servlet-name>GetInputStreamServlet</servlet-name>
+        <servlet-class>com.appdy.qa.servlet.GetInputStreamServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetParameterServlet</servlet-name>
+        <servlet-class>com.appdy.qa.servlet.GetParameterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetInputStreamServlet</servlet-name>
+        <url-pattern>*.gisws</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetParameterServlet</servlet-name>
+        <url-pattern>*.gpws</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetParameterServlet2</servlet-name>
+        <servlet-class>com.appdy.qa.servlet.GetParameterServlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetParameterServlet2</servlet-name>
+        <url-pattern>*.gpws2</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>NoRequestParameterCallServlet</servlet-name>
+        <servlet-class>com.appdy.qa.servlet.NoRequestParameterCallServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NoRequestParameterCallServlet</servlet-name>
+        <url-pattern>*.gnrpws</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetParameterFilteredServlet</servlet-name>
+        <servlet-class>com.appdy.qa.servlet.GetParameterFilteredServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetParameterFilteredServlet</servlet-name>
+        <url-pattern>*.fgpws</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>GetParameterServletFilter</filter-name>
+        <filter-class>com.appdy.qa.servlet.GetParameterServletFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>GetParameterServletFilter</filter-name>
+        <url-pattern>*.fgpws</url-pattern>
+    </filter-mapping>
+
+</web-app>

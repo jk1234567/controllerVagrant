@@ -1,0 +1,29 @@
+<web-app version="2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xsi:schemalocation="http:/java.sun.com/dtd/web-app_2_3.dtd">
+  <servlet>
+    <servlet-name>fibonacciClient</servlet-name>
+    <servlet-class>test.FibonacciClient</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>test</servlet-name>
+    <servlet-class>test.TestServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Log4JInitServlet</servlet-name>
+    <servlet-class>test.Log4JInitServlet</servlet-class>
+    <init-param>
+        <param-name>log4j-properties-location</param-name>
+        <param-value>WEB-INF/properties/log4j.properties</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>fibonacciClient</servlet-name>
+    <url-pattern>/fibClient</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+</web-app>

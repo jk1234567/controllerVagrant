@@ -1,0 +1,49 @@
+  394  cd /Users/jan.kirchner/Downloads/federationApps/apache-upstream/bin
+  395  cd ../../apache-upstream2/bin/
+  396  ./catalina.sh start
+  397  export JAVA_HOME=$(/usr/libexec/java_home)
+  398  source .bash_profile
+  399  vi .profile
+  400  source .profile
+  401  echo $JAVA_HOME
+  402  ./catalina.sh start
+  403  ./catalina.sh stop
+  404  while true; do curl http://localhost:8093/fibClientApp/fibClient?fib=23; done
+  405  pwd
+  406  while true; do curl http://localhost:8090/fibClientApp/fibClient?fib=23; d
+  407  while true; do curl http://localhost:8090/fibClientApp/fibClient?fib=23; done
+
+  https://singularity.jira.com/wiki/spaces/~Charles.Smith/pages/295648817/Federation+Testing+Info
+
+
+FederationApps Info:
+
+https://singularity.jira.com/wiki/download/attachments/295648817/federationApps.zip?version=1&modificationDate=1499882678807&cacheVersion=1&api=v2
+
+Assumes the upstream and downstream are on the same host.
+
+Put load on upstream to automatically call downstream: while true; do curl http://localhost:8090/fibClientApp/fibClient?fib=23; done
+
+Make config changes in federationApps/<app>/bin.
+
+For example downstream:
+
+
+ACCT=customer1
+ACCTKey=c4bebcf4-e731-4a44-bddf-421508dbed51
+APPName="Federated-Downstream"
+AGENTPath="/Users/charlessmith/Google_Drive/agents/java/appagent/ver4.4.0.0/javaagent.jar"
+3APPLOGSDir="/Users/kevin.morrell/work/logs/"
+ 
+JAVA_OPTS="$JAVA_OPTS $DEBUG_OPTIONS -Dcom.singularity.httpclientwrapper.readTimeout=120000 -Dappdynamics.agent.ssl.keymanager.factory.algorithm=PKIX  -Dappdynamics.controller.hostName=ec2-54-213-75-229.us-west-2.compute.amazonaws.com -Dappdynamics.controller.port=80 -Dappdynamics.agent.applicationName=App_${APPName} -Dappdynamics.agent.uniqueHostId=HostId_${APPName}_1 -Dappdynamics.agent.tierName=Tier_${APPName}_1 -Dappdynamics.agent.nodeName=Node_${APPName}_1 -javaagent:${AGENTPath} -Dappdynamics.agent.accountName=${ACCT} -Dappdynamics.agent.accountAccessKey=${ACCTKey}"
+
+
+For example upstream:
+
+ACCT="ACME Retail"
+ACCTKey= ab8bc3f0-c745-4056-94ea-91fb71fd0ac5
+ 
+APPName="Ecommerce-Upstream"
+AGENTPath="/Users/charlessmith/Google_Drive/agents/java/appagent/ver4.4.0.0/javaagent.jar"
+ 
+JAVA_OPTS="$JAVA_OPTS $DEBUG_OPTIONS -Dcom.singularity.httpclientwrapper.readTimeout=120000 -Dappdynamics.agent.ssl.keymanager.factory.algorithm=PKIX  -Dappdynamics.controller.hostName=ec2-54-200-26-60.us-west-2.compute.amazonaws.com -Dappdynamics.controller.port=80 -Dappdynamics.agent.applicationName=App_${APPName} -Dappdynamics.agent.uniqueHostId=HostId_${APPName}_1 -Dappdynamics.agent.tierName=Tier_${APPName}_1 -Dappdynamics.agent.nodeName=Node_${APPName}_1 -javaagent:${AGENTPath} -Dappdynamics.agent.accountName=${ACCT} -Dappdynamics.agent.accountAccessKey=${ACCTKey}"

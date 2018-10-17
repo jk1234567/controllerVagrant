@@ -1,0 +1,101 @@
+<activities>
+    <producer enabled="true" priority="1">
+        <instrumentation>
+            <class-name>com.retailerxxx.tpv.client.SecretChannelClient</class-name>
+            <method-name>send</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <identifiers>
+            <identifier name="identifier-0">
+                <data-gatherer-type>INVOKED</data-gatherer-type>
+                <transformer-type>SIMPLE_CLASS_NAME</transformer-type>
+            </identifier>
+        </identifiers>
+        <correlation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <getter-chain>this</getter-chain>
+                <position>0</position>
+                <transformer-type>GETTER_METHODS</transformer-type>
+            </payload-pointer>
+            <payload-operation>
+                <access-type>method</access-type>
+                <param-types>java.lang.Object,java.lang.Object</param-types>
+                <access-method>put</access-method>
+            </payload-operation>
+        </correlation>
+    </producer>
+    <consumer enabled="true" identify-transaction="true">
+        <instrumentation>
+            <class-name>com.retailerxxx.TPVServer.SecretChannelServer</class-name>
+            <method-name>processMessage</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <correlation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <getter-chain>this</getter-chain>
+                <position>0</position>
+                <transformer-type>GETTER_METHODS</transformer-type>
+            </payload-pointer>
+            <payload-operation>
+                <access-type>method</access-type>
+                <param-types>java.lang.Object</param-types>
+                <access-method>get</access-method>
+            </payload-operation>
+        </correlation>
+    </consumer>
+
+
+
+    
+
+    <producer enabled="true" priority="1">
+        <instrumentation>
+            <class-name>com.retailerxxx.tpv.client.TPVClient</class-name>
+            <method-name>authorize</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <identifiers>
+            <identifier name="TPV_AuthServer">
+                <data-gatherer-type>INVOKED</data-gatherer-type>
+                <user-defined-name>TPV_AuthServer</user-defined-name>
+                <transformer-type>USER_DEFINED_NAME</transformer-type>
+            </identifier>
+        </identifiers>
+        <correlation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <getter-chain>this</getter-chain>
+                <position>0</position>
+                <transformer-type>GETTER_METHODS</transformer-type>
+            </payload-pointer>
+            <payload-operation>
+                <access-type>method</access-type>
+                <param-types>java.lang.Object,java.lang.Object</param-types>
+                <access-method>put</access-method>
+            </payload-operation>
+        </correlation>
+    </producer>
+
+    <consumer enabled="true" identify-transaction="true">
+        <instrumentation>
+            <class-name>com.retailerxxx.tpv.auth.TPVAuthServer</class-name>
+            <method-name>processRequest</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <correlation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <getter-chain>this</getter-chain>
+                <position>0</position>
+                <transformer-type>GETTER_METHODS</transformer-type>
+            </payload-pointer>
+            <payload-operation>
+                <access-type>method</access-type>
+                <param-types>java.lang.Object</param-types>
+                <access-method>get</access-method>
+            </payload-operation>
+        </correlation>
+    </consumer>
+</activities>

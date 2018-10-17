@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">
+
+    <description>
+      Simple servlet webapp for correlation demo
+    </description>
+    <display-name>Simple servlet webapp for correlation demo</display-name>
+
+    <servlet>
+      <servlet-name>CorrelationFrontend</servlet-name>
+      <servlet-class>com.appdynamics.correlationdemo.web.CorrelationFrontend</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CorrelationFrontend</servlet-name>
+        <url-pattern>/frontend</url-pattern>
+    </servlet-mapping>
+
+</web-app>
